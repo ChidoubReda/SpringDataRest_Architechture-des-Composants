@@ -1,6 +1,7 @@
 package ma.emsi.chidoub.springdatarest;
 
 import ma.emsi.chidoub.springdatarest.enums.Genre;
+import ma.emsi.chidoub.springdatarest.model.Centre;
 import ma.emsi.chidoub.springdatarest.model.Etudiant;
 import ma.emsi.chidoub.springdatarest.repositories.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,24 +15,35 @@ public class SpringDataRestApplication implements CommandLineRunner {
     EtudiantRepository etudiantRepository;
     @Override
     public void run(String... args) throws Exception {
+
+        Centre centre1 = Centre.builder()
+                .nom_centre("EMSI Casablanca")
+                .adresse("Bd Bir Anzarane")
+                .build();
+
         Etudiant etudiant1 = Etudiant.builder()
                 .nom("Chidoub")
                 .prenom("Youssef")
                 .genre(Genre.Homme)
+                .id_centre(centre1)
                 .build();
         etudiantRepository.save(etudiant1);
         Etudiant etudiant2 = Etudiant.builder()
                 .nom("Rami")
                 .prenom("Haroun")
                 .genre(Genre.Homme)
+                .id_centre(centre1)
                 .build();
         etudiantRepository.save(etudiant2);
         Etudiant etudiant3 = Etudiant.builder()
                 .nom("Laarach")
                 .prenom("Salma")
                 .genre(Genre.Femme)
+                .id_centre(centre1)
                 .build();
         etudiantRepository.save(etudiant3);
+
+
     }
 
     public static void main(String[] args) {
